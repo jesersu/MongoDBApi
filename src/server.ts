@@ -3,6 +3,8 @@ import http from 'http';
 import mongoose from 'mongoose';
 import { config } from './config/config';
 import Logging from './library/Logging';
+import paqueteRoutes from './routes/Paquete';
+
 const router = express();
 
 /**Connect to mongo */
@@ -45,7 +47,7 @@ const StartServer = () => {
     });
 
     /** Rutas */
-
+    router.use('/paquetes', paqueteRoutes);
     /** Healthcheck */
     router.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
     /**Error */
